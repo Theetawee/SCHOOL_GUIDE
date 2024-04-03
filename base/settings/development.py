@@ -29,3 +29,6 @@ INTERNAL_IPS = [
 ]
 
 BACKUP_DIRECTORY = os.path.join(BASE_DIR, "backups/development")
+
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"

@@ -32,3 +32,5 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 STATIC_URL = "https://theetawee.github.io/static_cdn/"
 
 BACKUP_DIRECTORY = os.path.join(BASE_DIR, "backups/production")
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
