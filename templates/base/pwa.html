@@ -1,4 +1,6 @@
 {% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
 <link rel="manifest" href="{% url 'manifest' %}">
 <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/180.png' %}">
 <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/32.png' %}">
@@ -12,5 +14,10 @@
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="StudyGuide" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="StudyGuide">
+<meta name="apple-touch-startup-image" content="{% static 'images/logo.svg' %}">
 
 <script>if ('serviceWorker' in navigator){ navigator.serviceWorker.register("{% url 'sw'%}") .then(function(registration){}) .catch(function(error){})}</script>
