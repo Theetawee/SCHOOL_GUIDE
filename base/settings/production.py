@@ -34,3 +34,18 @@ STATIC_URL = "https://theetawee.github.io/static_cdn/"
 BACKUP_DIRECTORY = os.path.join(BASE_DIR, "backups/production")
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+        "OAUTH_PKCE_ENABLED": True,
+        "APP": {"client_id": "123", "secret": "456", "key": ""},
+    }
+}

@@ -32,3 +32,18 @@ BACKUP_DIRECTORY = os.path.join(BASE_DIR, "backups/development")
 
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+        "OAUTH_PKCE_ENABLED": True,
+        "APP": {"client_id": "123", "secret": "456", "key": ""},
+    }
+}
