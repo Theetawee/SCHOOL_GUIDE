@@ -1,1 +1,10 @@
 *{font-family: 'Rubik', sans-serif;}@tailwind base;@tailwind components;@tailwind utilities;
+.request_loader{
+        display:none;
+    }
+    .htmx-request .request_loader{
+        display:flex;
+    }
+    .htmx-request.request_loader{
+        display:flex;
+    }
