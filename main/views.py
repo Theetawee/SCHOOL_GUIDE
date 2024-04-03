@@ -25,3 +25,9 @@ def subjects(request):
     return render(
         request, "main/subjects.html", {"subjects": subjects, "topics": topics}
     )
+
+
+def questions_list(request, topic_slug):
+    topic = Topic.objects.get(slug=topic_slug)
+    questions = Question.objects.filter(topic=topic)
+    return render(request, "main/questions_list.html", {"questions": questions})

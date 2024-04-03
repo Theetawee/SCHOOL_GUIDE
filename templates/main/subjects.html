@@ -15,7 +15,7 @@
                 <ul class="list-disc pl-6">
                     {% for topic in topics %}
                     {% if topic.subject == subject%}
-                    <li><a href="" class="text-primary-600 hover:underline">{{topic.title}}</a>
+                    <li><a href="{% url 'questions_list' topic.slug %}" class="text-primary-600 hover:underline">{{topic.title}}</a>
                     <p class="text-sm">{{topic.description}}</p>
                     </li>
                     {% endif %}

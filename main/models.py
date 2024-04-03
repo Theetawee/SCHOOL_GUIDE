@@ -18,8 +18,9 @@ class Subject(models.Model):
 
 class Topic(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, unique=True)
     description = models.TextField()
+    slug = models.SlugField(blank=True, null=True, unique=True, max_length=100)
 
     def __str__(self):
         return self.title
@@ -38,4 +39,11 @@ class Question(models.Model):
 def create_subject_slug(sender, instance, created, **kwargs):
     if created:
         instance.slug = slugify(instance.name)
+        instance.save()
+
+
+@receiver(post_save, sender=Topic)
+def create_topic_slug(sender, instance, created, **kwargs):
+    if created:
+        instance.slug = slugify(instance.title)
         instance.save()
