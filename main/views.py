@@ -68,6 +68,8 @@ def books_list(request):
 
 
 def like_question(request, pk):
+    if not request.user.is_authenticated:
+        return render(request, "partials/status/not-allowed.html")
     question = get_object_or_404(Question, pk=pk)
 
     if request.user in question.likes.all():
@@ -92,6 +94,8 @@ def like_question(request, pk):
 
 
 def dislike_question(request, pk):
+    if not request.user.is_authenticated:
+        return render(request, "partials/status/not-allowed.html")
     question = get_object_or_404(Question, pk=pk)
 
     if request.user in question.dislikes.all():
