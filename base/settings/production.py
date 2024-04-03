@@ -2,19 +2,24 @@ from base.settings.base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [""]
+ALLOWED_HOSTS = ["*"]
 
 
+# Replace the DATABASES section of your settings.py with this
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "neondb",
-        "USER": "foreverinc",
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": "ep-blue-violet-792186.us-east-2.aws.neon.tech",
-        "PORT": "5432",
+        "NAME": os.environ.get("PGDATABASE"),
+        "USER": os.environ.get("PGUSER"),
+        "PASSWORD": os.environ.get("PGPASSWORD"),
+        "HOST": os.environ.get("PGHOST"),
+        "PORT": os.environ.get("PGPORT", 5432),
+        "OPTIONS": {
+            "sslmode": "require",
+        },
     }
 }
+
 
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": "dnb8rethz",
@@ -24,6 +29,6 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
-STATIC_URL = os.environ.get("STATIC_URL")
+STATIC_URL = "https://theetawee.github.io/static_cdn/"
 
 BACKUP_DIRECTORY = os.path.join(BASE_DIR, "backups/production")
