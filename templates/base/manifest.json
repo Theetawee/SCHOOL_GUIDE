@@ -3,7 +3,7 @@
   "name": "StudyGuide",
   "short_name": "StudyGuide",
   "start_url": "/",
-  "theme_color": "#ffffff",
+  "theme_color": "#0d9488",
   "scope": "/",
   "prefer_related_applications": false,
   "launch_handler": {
