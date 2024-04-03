@@ -2,7 +2,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Subject(models.Model):
@@ -30,7 +30,7 @@ class Topic(models.Model):
 class Question(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     question_text = models.TextField()
-    answer_text = RichTextField()
+    answer_text = CKEditor5Field("Text", config_name="extends")
 
     def __str__(self):
         return self.question_text[:50]  # Return first 50 characters of question text
