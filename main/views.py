@@ -1,5 +1,5 @@
 from .models import Question
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 
 # Create your views here.
@@ -12,3 +12,8 @@ def index(request):
     else:
         results = Question.objects.none()
     return render(request, "main/index.html", {"results": results})
+
+
+def question_detail(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    return render(request, "main/question_detail.html", {"question": question})
