@@ -43,7 +43,7 @@
         <div>
 
     <div>
-        <p class="text-lg mb-4">Question {{question.id}}</h1>
+        <p class="text-lg mb-4">Question {{question.id}}</p>
             <h1 class="text-2xl">{{question.question_text}}</h1>
 
 
@@ -73,7 +73,18 @@
         <p class="italic">{{question.topic.description}}</p>
         </div>
     </div>
+
+
+    {% include 'partials/add_ons.html' %}
+
+
     </div>
+
+
+
+
+
+
 </section>
 
 {% endblock %}

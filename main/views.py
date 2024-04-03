@@ -1,6 +1,5 @@
-import time
-from .models import Question, Subject, Topic
-from django.shortcuts import render, get_object_or_404
+from .models import Question, Subject, Topic, AddOn
+from django.shortcuts import redirect, render, get_object_or_404
 
 
 # Create your views here.
@@ -20,9 +19,15 @@ def index(request):
 
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
+    add_ons = AddOn.objects.filter(question=question)
     title = f"{question.topic} - {question.question_text[:50]}..."
     description = f"Explore the details of the question: '{question.question_text}'. Test your knowledge and understanding with StudyGuide."
-    context = {"title": title, "description": description, "question": question}
+    context = {
+        "title": title,
+        "description": description,
+        "question": question,
+        "add_ons": add_ons,
+    }
     return render(request, "main/question_detail.html", context)
 
 
@@ -118,3 +123,18 @@ def dislike_question(request, pk):
     return render(
         request, "partials/status/nolike-dislike.html", {"question": question}
     )
+
+
+def question_addon(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    if request.POST:
+        comment = request.POST.get("comment")
+        new_addon = AddOn.objects.create(
+            question=question, account=request.user, comment=comment
+        )
+        new_addon.save()
+        add_ons = AddOn.objects.filter(question=question)
+        return render(
+            request, "partials/add_ons.html", {"add_ons": add_ons, "question": question}
+        )
+    return redirect("question_detail", pk=question.pk)

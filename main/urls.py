@@ -7,7 +7,8 @@ from .views import (
     online_tests,
     books_list,
     like_question,
-    dislike_question
+    dislike_question,
+    question_addon
 )
 
 
@@ -20,4 +21,5 @@ urlpatterns = [
     path("books/", books_list, name="books"),
     path("like-question/<int:pk>/", like_question, name="like-question"),
     path("dislike-question/<int:pk>/", dislike_question, name="dislike-question"),
+    path("question-addon/<int:pk>/", question_addon, name="question_addon"),
 ]

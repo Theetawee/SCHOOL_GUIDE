@@ -39,6 +39,19 @@ class Question(models.Model):
         return self.question_text[:50]  # Return first 50 characters of question text
 
 
+class AddOn(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    comment = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.account.username
+
+    class Meta:
+        ordering = ["-pub_date"]
+
+
 @receiver(post_save, sender=Subject)
 def create_subject_slug(sender, instance, created, **kwargs):
     if created:
