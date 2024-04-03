@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block content%}
+
+
+    <section class="px-4 py-8">
+        <div class="max-w-screen-lg mx-auto">
+            <h1 class="text-xl mb-4">Total subjects ({{subjects.count}})</h1>
+            <ul class="list-decimal pl-4">
+            {% for subject in subjects %}
+            <li class="mb-4">
+                <h2 class="text-xl mb-2">{{ subject.name }}</h2>
+                {% if subject.number_of_topics %}
+                <p class="text-lg">Topics</p>
+                <ul class="list-disc pl-6">
+                    {% for topic in topics %}
+                    {% if topic.subject == subject%}
+                    <li><a href="" class="text-primary-600 hover:underline">{{topic.title}}</a>
+                    <p class="text-sm">{{topic.description}}</p>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

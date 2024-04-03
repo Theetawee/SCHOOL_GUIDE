@@ -1,4 +1,4 @@
-from .models import Question
+from .models import Question, Subject, Topic
 from django.shortcuts import render, get_object_or_404
 
 
@@ -17,3 +17,11 @@ def index(request):
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
     return render(request, "main/question_detail.html", {"question": question})
+
+
+def subjects(request):
+    subjects = Subject.objects.all()
+    topics = Topic.objects.all()
+    return render(
+        request, "main/subjects.html", {"subjects": subjects, "topics": topics}
+    )
