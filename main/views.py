@@ -36,3 +36,10 @@ def questions_list(request, topic_slug):
     return render(
         request, "main/questions_list.html", {"questions": questions, "topic": topic}
     )
+
+
+def online_tests(request):
+    title = "Online Tests - StudyGuide"
+    description = "Take online tests on StudyGuide to assess your knowledge, practice your skills, and prepare for exams. Explore a wide range of subjects and topics with our comprehensive collection of online tests."
+    context = {"title": title, "description": description}
+    return render(request, "main/online_tests.html", context)

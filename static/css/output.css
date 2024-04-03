@@ -1818,6 +1818,11 @@ input:checked + .toggle-bg{
   padding-bottom: 2rem;
 }
 
+.py-32{
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
 .pb-10{
   padding-bottom: 2.5rem;
 }
@@ -1882,6 +1887,11 @@ input:checked + .toggle-bg{
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold{
