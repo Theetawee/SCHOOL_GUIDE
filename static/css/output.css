@@ -1313,10 +1313,6 @@ input:checked + .toggle-bg{
   height: calc(100% - 1rem);
 }
 
-.h-screen{
-  height: 100vh;
-}
-
 .max-h-full{
   max-height: 100%;
 }
@@ -1552,6 +1548,10 @@ input:checked + .toggle-bg{
 
 .overflow-hidden{
   overflow: hidden;
+}
+
+.overflow-x-auto{
+  overflow-x: auto;
 }
 
 .overflow-y-auto{
@@ -2095,6 +2095,38 @@ input:checked + .toggle-bg{
   display:flex;
 }
 
+/* table.css */
+
+/* Apply basic styles to the table */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Apply styles to table headers */
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Apply alternating row colors to table rows */
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Apply styles to table cells */
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
 .hover\:border-gray-300:hover{
   --tw-border-opacity: 1;
   border-color: rgb(224 224 224 / var(--tw-border-opacity));
@@ -2607,5 +2639,4 @@ input:checked + .toggle-bg{
 .rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 1;
 }
-
-    
+  

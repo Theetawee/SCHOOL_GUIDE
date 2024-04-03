@@ -12,4 +12,34 @@
         display:flex;
     }
 
-    
+  
+
+
+ /* table.css */
+
+/* Apply basic styles to the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Apply styles to table headers */
+  th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Apply alternating row colors to table rows */
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Apply styles to table cells */
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  

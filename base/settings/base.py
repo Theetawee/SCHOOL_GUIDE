@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "cloudinary",
     "maintenance_mode",
     "allauth.socialaccount.providers.google",
+    "ckeditor",
 ]
 
 SITE_ID = 1
