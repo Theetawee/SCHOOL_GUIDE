@@ -29,6 +29,7 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    path("accounts/", include("allauth.urls")),
 ]
 
 if settings.DEBUG:
