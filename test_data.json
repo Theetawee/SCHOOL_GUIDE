@@ -1,0 +1,88 @@
+[
+  {
+    "model": "main.subject",
+    "pk": 1,
+    "fields": {
+      "name": "Mathematics"
+    }
+  },
+  {
+    "model": "main.subject",
+    "pk": 2,
+    "fields": {
+      "name": "Science"
+    }
+  },
+  {
+    "model": "main.topic",
+    "pk": 1,
+    "fields": {
+      "subject": 1,
+      "title": "Algebra",
+      "description": "Basic algebraic concepts and equations"
+    }
+  },
+  {
+    "model": "main.topic",
+    "pk": 2,
+    "fields": {
+      "subject": 1,
+      "title": "Geometry",
+      "description": "Study of shapes, sizes, and properties of figures"
+    }
+  },
+  {
+    "model": "main.topic",
+    "pk": 3,
+    "fields": {
+      "subject": 2,
+      "title": "Biology",
+      "description": "Study of living organisms and their interactions"
+    }
+  },
+  {
+    "model": "main.topic",
+    "pk": 4,
+    "fields": {
+      "subject": 2,
+      "title": "Chemistry",
+      "description": "Study of matter and its properties"
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 1,
+    "fields": {
+      "topic": 1,
+      "question_text": "What is the formula for the area of a rectangle?",
+      "answer_text": "The formula for the area of a rectangle is length x width."
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 2,
+    "fields": {
+      "topic": 1,
+      "question_text": "What is the quadratic formula?",
+      "answer_text": "The quadratic formula is used to find the roots of a quadratic equation."
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 3,
+    "fields": {
+      "topic": 3,
+      "question_text": "What is photosynthesis?",
+      "answer_text": "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll."
+    }
+  },
+  {
+    "model": "main.question",
+    "pk": 4,
+    "fields": {
+      "topic": 3,
+      "question_text": "What are the different stages of mitosis?",
+      "answer_text": "The stages of mitosis are prophase, metaphase, anaphase, and telophase."
+    }
+  }
+]
