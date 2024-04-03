@@ -1,5 +1,5 @@
 {% extends "account/base_entrance.html" %} {% load redotags %} 
-
+{% load static %}
 
 {% block head %}
 <title>Sign Up - StudyGuide</title>
@@ -14,14 +14,15 @@
 {% block content %}
 <section class="bg-gray-50 dark:bg-gray-900">
   <div
-    class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+    class="flex flex-col items-center justify-center px-3 py-8 mx-auto">
     <a
       href="{% url 'home' %}"
       class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-      StudyGuide
+      <img src="{% static 'images/logo.svg' %}" class="w-12 h-12" alt="Logo" />
+
     </a>
     <div
-      class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      class="w-full bg-white border border-gray-300 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       {% if form.errors %}
       <div class="p-4">
       {% for field in form %}
@@ -35,7 +36,7 @@
       </div>
       {% endif %}
 
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div class="py-6 px-4 space-y-4 md:space-y-6 sm:p-8">
         <h1
           class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Create and account

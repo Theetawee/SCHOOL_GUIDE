@@ -3,7 +3,7 @@
 {% load socialaccount %}
 {% get_providers as socialaccount_providers %}
 {% if socialaccount_providers %}
-<div class="p-4">
+<div class="py-4">
 <p class="text-center mb-4">Or continue with</p>
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
     {% include "socialaccount/snippets/login_extra.html" %}
