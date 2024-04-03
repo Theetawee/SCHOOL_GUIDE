@@ -1313,6 +1313,10 @@ input:checked + .toggle-bg{
   height: calc(100% - 1rem);
 }
 
+.h-screen{
+  height: 100vh;
+}
+
 .max-h-full{
   max-height: 100%;
 }
