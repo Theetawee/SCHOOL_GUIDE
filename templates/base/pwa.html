@@ -1,1 +1,16 @@
-<link rel="manifest" href="{% url 'manifest' %}"><script>if ('serviceWorker' in navigator){ navigator.serviceWorker.register("{% url 'sw'%}") .then(function(registration){}) .catch(function(error){})}</script>
+{% load static %}
+<link rel="manifest" href="{% url 'manifest' %}">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/180.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/16.png' %}">
+<link rel="mask-icon" href="{% static 'images/tab.svg' %}" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="shortcut icon" href="{% static 'images/logo.svg' %}" type="image/svg+xml" />
+<meta name="language" content="en" />
+<meta property="og:url" content="{{request.build_absolute_uri}}" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="StudyGuide" />
+
+<script>if ('serviceWorker' in navigator){ navigator.serviceWorker.register("{% url 'sw'%}") .then(function(registration){}) .catch(function(error){})}</script>
