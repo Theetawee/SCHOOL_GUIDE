@@ -6,6 +6,8 @@ from .views import (
     questions_list,
     online_tests,
     books_list,
+    like_question,
+    dislike_question
 )
 
 
@@ -16,4 +18,6 @@ urlpatterns = [
     path("questions/<slug:topic_slug>/", questions_list, name="questions_list"),
     path("online-tests/", online_tests, name="online_tests"),
     path("books/", books_list, name="books"),
+    path("like-question/<int:pk>/", like_question, name="like-question"),
+    path("dislike-question/<int:pk>/", dislike_question, name="dislike-question"),
 ]

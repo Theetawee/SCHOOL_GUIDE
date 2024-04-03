@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
+from accounts.models import Account
 
 
 class Subject(models.Model):
@@ -31,6 +32,8 @@ class Question(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     question_text = models.TextField()
     answer_text = CKEditor5Field("Text", config_name="extends")
+    likes = models.ManyToManyField(Account, related_name="likes", blank=True)
+    dislikes = models.ManyToManyField(Account, related_name="dislikes", blank=True)
 
     def __str__(self):
         return self.question_text[:50]  # Return first 50 characters of question text

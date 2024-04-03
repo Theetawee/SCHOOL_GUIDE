@@ -65,3 +65,51 @@ def books_list(request):
     description = "Explore a vast collection of educational books on StudyGuide. Find textbooks, reference materials, and study guides to enhance your learning experience and excel in your studies."
     context = {"title": title, "description": description}
     return render(request, "main/books.html", context)
+
+
+def like_question(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+
+    if request.user in question.likes.all():
+        # Remove the user from likes if they have previously liked the question
+        question.likes.remove(request.user)
+
+        return render(
+            request, "partials/status/nolike-nodislike.html", {"question": question}
+        )
+
+    if request.user in question.dislikes.all():
+        # Remove the user from dislikes if they have previously disliked the question
+        question.dislikes.remove(request.user)
+
+    # Add the user to the likes list
+    question.likes.add(request.user)
+
+    # Redirect the user to the question detail page
+    return render(
+        request, "partials/status/like-nodislike.html", {"question": question}
+    )
+
+
+def dislike_question(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+
+    if request.user in question.dislikes.all():
+        # Remove the user from likes if they have previously liked the question
+        question.dislikes.remove(request.user)
+
+        return render(
+            request, "partials/status/nolike-nodislike.html", {"question": question}
+        )
+
+    if request.user in question.likes.all():
+        # Remove the user from dislikes if they have previously disliked the question
+        question.likes.remove(request.user)
+
+    # Add the user to the likes list
+    question.dislikes.add(request.user)
+
+    # Redirect the user to the question detail page
+    return render(
+        request, "partials/status/nolike-dislike.html", {"question": question}
+    )

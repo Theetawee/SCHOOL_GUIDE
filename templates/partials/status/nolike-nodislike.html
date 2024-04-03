@@ -1,0 +1,16 @@
+<div class="flex items-center justify-between gap-10 px-4  mx-auto w-full ">
+    <div>
+        <span class="flex items-center gap-2">
+            {% include 'partials/like-button.html' %}
+            <span>{{question.likes.all.count}}</span>
+        </span>
+        
+    </div>
+    <div>
+        <span class="flex items-center gap-2">
+            {% include 'partials/nolike-button.html' %}
+            <span>{{question.dislikes.all.count}}</span>
+        </span>
+        
+    </div>
+</div>

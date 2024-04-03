@@ -52,19 +52,14 @@
         <p class="text-lg underline">Solution</p>
         <div class="overflow-x-auto">{{question.answer_text|safe}}</div>
     </div>
-    <div class="flex items-center justify-between gap-10 px-4  mx-auto w-full ">
-        <div>
-            <span>
-                {% include 'partials/like-button.html' %}
-            </span>
-            
-        </div>
-        <div>
-            <span>
-                {% include 'partials/nolike-button.html' %}
-            </span>
-            
-        </div>
+    <div id="status">
+    {% if request.user in question.likes.all %}
+    {% include 'partials/status/like-nodislike.html' %}
+    {% elif request.user in question.dislikes.all %}
+    {% include 'partials/status/nolike-dislike.html' %}
+    {% else %}
+    {% include 'partials/status/nolike-nodislike.html' %}
+    {% endif %}
     </div>
     </div>
     <div class="">
