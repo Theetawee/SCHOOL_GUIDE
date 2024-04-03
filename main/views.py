@@ -1,3 +1,4 @@
+import time
 from .models import Question, Subject, Topic
 from django.shortcuts import render, get_object_or_404
 
