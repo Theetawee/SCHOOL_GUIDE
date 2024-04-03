@@ -1,4 +1,6 @@
-*{  font-family: "Open Sans", sans-serif !important;
+*{  font-family: "Open Sans", sans-serif !important;user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    
 }@tailwind base;@tailwind components;@tailwind utilities;
 .request_loader{
         display:none;
@@ -9,3 +11,5 @@
     .htmx-request.request_loader{
         display:flex;
     }
+
+    
