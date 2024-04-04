@@ -34,6 +34,7 @@ class Question(models.Model):
     answer_text = CKEditor5Field("Text", config_name="extends")
     likes = models.ManyToManyField(Account, related_name="likes", blank=True)
     dislikes = models.ManyToManyField(Account, related_name="dislikes", blank=True)
+    paid = models.BooleanField(default=False)
 
     def __str__(self):
         return self.question_text[:50]  # Return first 50 characters of question text

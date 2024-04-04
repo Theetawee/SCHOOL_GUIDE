@@ -1,6 +1,7 @@
 from .models import Question, Subject, Topic, AddOn
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # Create your views here.
@@ -19,7 +20,17 @@ def index(request):
 
 
 def question_detail(request, pk):
+    # reffer
+    reffer = request.META.get("HTTP_REFERER")
     question = get_object_or_404(Question, pk=pk)
+    if question.paid:
+        if not request.user.is_authenticated:
+            return redirect("account_login")
+        if request.user.points < 1:
+            messages.warning(
+                request, "You don't have enough points to access this question."
+            )
+            return redirect(reffer)
     add_ons = AddOn.objects.filter(question=question)
     title = f"{question.topic} - {question.question_text[:50]}..."
     description = f"Explore the details of the question: '{question.question_text}'. Test your knowledge and understanding with StudyGuide."
