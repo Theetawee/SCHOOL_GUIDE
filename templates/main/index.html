@@ -28,11 +28,54 @@
     <div id="results">
         {% include 'base/loader.html' %}
     </div>
-    <div class="flex items-center gap-x-8 gap-y-3 justify-center">
+    <div class="flex items-center gap-x-8 md:gap-x-16 gap-y-3 justify-center">
         <a class="text-primary-600 hover:underline" href="{% url 'subjects' %}">Subjects and Topics</a>
         <a class="text-primary-600 hover:underline" href="{% url 'online_tests' %}">Online Tests</a>
         <a class="text-primary-600 hover:underline" href="{% url 'books' %}">Books</a>
     </div>
+
+    <div class=" max-w-screen-lg mx-auto py-20 text-lg">
+        <p>Unlock your potential with StudyGuide! Join our vibrant community of learners from across the globe and take your learning journey to the next level.</p>
+        <p>Sign up now and gain access to a world of knowledge, interactive courses, and invaluable resources designed to fuel your academic success.</p>
+    </div>
+
+    <div class="max-w-screen-lg grid grid-cols-1 gap-10 mx-auto">
+        <div class="flex flex-col-reverse md:flex-row items-center gap-4">
+            <div class="w-full">
+            <div class="w-72 h-72 mx-auto flex items-center justify-center overflow-hidden">
+                <img src="{% static 'images/questions.webp' %}" class="w-full h-full" alt="Questions">
+            </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-semibold text-amber-700">Master Your Studies</h2>
+                <p class="text-gray-600 mt-2">Ace your exams by practicing with a diverse range of questions sourced from reputable examination bodies, along with detailed answers to guide your learning.</p>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-4">
+            <div>
+                <h2 class="text-3xl font-semibold text-amber-700">Prepare with Confidence</h2>
+                <p class="text-gray-600 mt-2">Boost your exam readiness with our comprehensive online tests. Access a wide range of practice exams meticulously designed to simulate real exam conditions, helping you build confidence and excel in your assessments.</p>
+            </div>
+            <div class="w-full">
+                <div class="w-72 h-72 mx-auto flex items-center justify-center overflow-hidden">
+                    <img src="{% static 'images/online_tests.webp' %}" class="w-full h-full" alt="Online Tests">
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col-reverse md:flex-row items-center gap-4">
+            <div class="w-full">
+                <div class="w-72 h-72 mx-auto flex items-center justify-center overflow-hidden">
+                    <img src="{% static 'images/resources.webp' %}" class="w-full h-full" alt="Resources">
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-semibold text-amber-700">Unlock Limitless Learning</h2>
+                <p class="text-gray-600 mt-2">Expand your knowledge horizons with our vast array of educational resources. From textbooks to interactive learning materials, explore a treasure trove of resources tailored to enrich your learning journey and fuel your academic success.</p>
+            </div>
+        </div>
+        
+    </div>
+    
 </section>
 
 
