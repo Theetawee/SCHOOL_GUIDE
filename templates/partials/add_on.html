@@ -8,7 +8,7 @@
                     alt="{{addon.account.username}}">
                     <span>
                     <p>@{{addon.account.username}}</p>
-            <p class="text-gray-600 dark:text-gray-400"><time class="italic text-xs" pubdate datetime="{{addon.pub_date|date}}">{{addon.pub_date|timesince}}</time></p></span>
+            <p class="text-gray-600 dark:text-gray-400"><time class="italic text-xs" pubdate datetime="{{addon.pub_date|date}}">{{addon.pub_date|timesince}} ago</time></p></span>
         </div>
         {% if request.user.is_authenticated %}
         <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
@@ -34,6 +34,6 @@
         </div>
         {% endif %}
     </footer>
-    <p class="text-gray-500 dark:text-gray-400">{{addon.comment}}</p>
+    <p class="text-gray-900 ps-12 dark:text-gray-400">{{addon.comment}}</p>
     
 </article>

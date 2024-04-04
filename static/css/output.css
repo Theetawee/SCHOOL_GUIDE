@@ -1911,6 +1911,14 @@ input:checked + .toggle-bg{
   padding-top: 0.5rem;
 }
 
+.ps-8{
+  padding-inline-start: 2rem;
+}
+
+.ps-12{
+  padding-inline-start: 3rem;
+}
+
 .text-center{
   text-align: center;
 }
