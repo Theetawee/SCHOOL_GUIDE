@@ -25,3 +25,7 @@ def manifest(request):
 
 def offline(request):
     return render(request, "base/offline.html")
+
+
+def assetLink(request):
+    return render(request, "base/assetLinks.json", content_type="application/json")

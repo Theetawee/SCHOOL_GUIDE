@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from base.sitemap import StaticViewSitemap
 from django.views.generic.base import TemplateView
-from base.utils import service_worker, manifest, offline
+from base.utils import service_worker, manifest, offline,assetLink
 
 sitemaps = {"others": StaticViewSitemap}
 
@@ -31,6 +31,7 @@ urlpatterns = [
     ),
     path("accounts/", include("allauth.urls")),
     path("ckeditor5/", include("django_ckeditor_5.urls")),
+    path(".well-known/assetlinks.json", assetLink, name="assetlinks_json"),
 ]
 
 if settings.DEBUG:
