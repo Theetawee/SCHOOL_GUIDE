@@ -1,6 +1,6 @@
 {% load static %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
+<link rel="canonical" href="{{request.build_absolute_uri}}">
 <link rel="manifest" href="{% url 'manifest' %}">
 <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/180.png' %}">
 <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/32.png' %}">
@@ -12,12 +12,16 @@
 <link rel="icon" href="{% static 'images/logo.svg' %}" type="image/svg+xml" />
 <meta name="language" content="en" />
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content="en_GB" />
 <meta property="og:site_name" content="StudyGuide" />
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes"> 
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="StudyGuide">
 <meta name="apple-touch-startup-image" content="{% static 'images/logo.svg' %}">
+<meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@waanverse" />
+  <meta name="twitter:image" content="{% static 'images/logo.png' %}" />
+  <meta property="og:image" content="{% static 'images/logo.png' %}" />
 
 <script>if ('serviceWorker' in navigator){ navigator.serviceWorker.register("{% url 'sw'%}") .then(function(registration){}) .catch(function(error){})}</script>
