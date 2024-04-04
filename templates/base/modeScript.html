@@ -18,20 +18,28 @@
       if (localStorage.getItem("color-theme") === "light") {
         document.documentElement.classList.add("dark");
         document.documentElement.style.colorScheme = "dark";
+        const metaTheme=document.querySelector('meta[name="theme-color"]');
+        metaTheme.setAttribute('content', '#212121');
         localStorage.setItem("color-theme", "dark");
       } else {
         document.documentElement.classList.remove("dark");
         document.documentElement.style.colorScheme = "light";
         localStorage.setItem("color-theme", "light");
+        const metaTheme=document.querySelector('meta[name="theme-color"]');
+    metaTheme.setAttribute('content', '#ffffff');
       }
     } else {
       if (document.documentElement.classList.contains("dark")) {
         document.documentElement.classList.remove("dark");
         document.documentElement.style.colorScheme = "light";
+        const metaTheme=document.querySelector('meta[name="theme-color"]');
+    metaTheme.setAttribute('content', '#ffffff');
         localStorage.setItem("color-theme", "light");
       } else {
         document.documentElement.classList.add("dark");
         document.documentElement.style.colorScheme = "dark";
+        const metaTheme=document.querySelector('meta[name="theme-color"]');
+    metaTheme.setAttribute('content', '#212121');
         localStorage.setItem("color-theme", "dark");
       }
     }

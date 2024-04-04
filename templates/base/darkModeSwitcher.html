@@ -6,8 +6,12 @@
   ) {
     document.documentElement.classList.add("dark");
     document.documentElement.style.colorScheme = "dark";
+    const metaTheme=document.querySelector('meta[name="theme-color"]');
+    metaTheme.setAttribute('content', '#212121');
   } else {
     document.documentElement.classList.remove("dark");
     document.documentElement.style.colorScheme = "light";
+    const metaTheme=document.querySelector('meta[name="theme-color"]');
+    metaTheme.setAttribute('content', '#ffffff');
   }
 </script>
