@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from base.sitemap import StaticViewSitemap
 from django.views.generic.base import TemplateView
-from base.utils import service_worker, manifest, offline,assetLink
+from base.utils import service_worker, manifest, offline, assetLink
 
 sitemaps = {"others": StaticViewSitemap}
 
