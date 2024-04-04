@@ -145,7 +145,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 LOGOUT_REDIRECT_URL = "home"
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_BLACKLIST = []
-
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 customColorPalette = [
     {"color": "hsl(4, 90%, 58%)", "label": "Red"},
@@ -307,3 +307,7 @@ CKEDITOR_5_CONFIGS = {
         },
     },
 }
+
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"

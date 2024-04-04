@@ -35,17 +35,24 @@ BACKUP_DIRECTORY = os.path.join(BASE_DIR, "backups/production")
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
+IS_PRODUCTION=True
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
+        "EMAIL_AUTHENTICATION": True,
         "SCOPE": [
             "profile",
             "email",
         ],
         "AUTH_PARAMS": {
-            "access_type": "online",
+            "access_type": "offline",
         },
+        "FETCH_USERINFO": True,
         "OAUTH_PKCE_ENABLED": True,
-        "APP": {"client_id": "123", "secret": "456", "key": ""},
+        "APP": {
+            "client_id": "914307882823-crg95miqt8572mtrvimh3rs2b9ujtep9.apps.googleusercontent.com",
+            "secret": os.environ.get("GOOGLE_PROD"),
+            "key": "",
+        },
     }
 }
