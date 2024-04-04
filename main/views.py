@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.html import strip_tags
+from django.db.models import Q
 
 
 # Create your views here.
@@ -13,7 +14,11 @@ def index(request):
 
     if "question" in request.GET:
         query = request.GET.get("question")
-        results = Question.objects.filter(question_text__icontains=query)
+        results = Question.objects.filter(
+            Q(topic__title__icontains=query)
+            | Q(question_text__icontains=query)
+            | Q(topic__subject__name__icontains=query)
+        )
         if request.htmx:
             return render(request, "partials/results.html", {"results": results})
 
