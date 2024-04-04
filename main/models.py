@@ -25,7 +25,7 @@ class Topic(models.Model):
     slug = models.SlugField(blank=True, null=True, unique=True, max_length=100)
 
     def __str__(self):
-        return self.title
+        return f'{self.title} - {self.subject.name}'
 
 
 class Question(models.Model):
