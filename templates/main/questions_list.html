@@ -1,5 +1,13 @@
 {% extends "base/base.html" %} {% block content %}
-
+<style>
+  h2{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+  }ol,ul{
+    margin-left: 2rem;
+  }
+</style>
 <section class="max-w-screen-md mx-auto px-4 py-10">
   <div class="mb-10">
     <nav class="flex" aria-label="Breadcrumb">
@@ -79,9 +87,10 @@
         {% for question in questions %}
 
         <div class="bg-white p-4 shadow rounded-xl">
-          <span class="flex gap-2 text-2xl">
-            {{forloop.counter}}.
-            <h2 class="text-2xl">{{question.question_text}}</h2>
+          <span class="flex gap-2">
+            <span class="text-2xl">
+            {{forloop.counter}}.</span>
+            <div>{{question.question_text|safe}}</div>
           </span>
 
           <div class="mt-4 flex items-center justify-center">

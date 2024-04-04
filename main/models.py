@@ -30,7 +30,7 @@ class Topic(models.Model):
 
 class Question(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    question_text = models.TextField()
+    question_text = CKEditor5Field("Text", config_name="extends")
     answer_text = CKEditor5Field("Text", config_name="extends")
     likes = models.ManyToManyField(Account, related_name="likes", blank=True)
     dislikes = models.ManyToManyField(Account, related_name="dislikes", blank=True)

@@ -2,6 +2,7 @@ from .models import Question, Subject, Topic, AddOn
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.utils.html import strip_tags 
 
 
 # Create your views here.
@@ -32,8 +33,8 @@ def question_detail(request, pk):
             )
             return redirect(reffer)
     add_ons = AddOn.objects.filter(question=question)
-    title = f"{question.topic} - {question.question_text[:50]}..."
-    description = f"Explore the details of the question: '{question.question_text}'. Test your knowledge and understanding with StudyGuide."
+    title = strip_tags(f"{question.question_text[:50]}... - StudyGuide").replace("\n", " ").replace("\r", " ").replace("&nbsp;", " ")
+    description = strip_tags(f"Explore the details of the question: '{question.question_text}'. Test your knowledge and understanding with StudyGuide.").replace("\n", " ").replace("\r", " ").replace("&nbsp;", " ")
     context = {
         "title": title,
         "description": description,
