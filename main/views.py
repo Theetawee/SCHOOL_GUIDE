@@ -1,5 +1,6 @@
 from .models import Question, Subject, Topic, AddOn
 from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -138,3 +139,15 @@ def question_addon(request, pk):
             request, "partials/add_ons.html", {"add_ons": add_ons, "question": question}
         )
     return redirect("question_detail", pk=question.pk)
+
+
+@login_required
+def remove_addon(request, pk):
+
+    addon = get_object_or_404(AddOn, pk=pk)
+    question = addon.question
+    addon.delete()
+    add_ons = AddOn.objects.filter(question=question)
+    return render(
+        request, "partials/add_ons.html", {"add_ons": add_ons, "question": question}
+    )

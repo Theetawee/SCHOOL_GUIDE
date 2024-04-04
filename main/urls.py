@@ -8,7 +8,8 @@ from .views import (
     books_list,
     like_question,
     dislike_question,
-    question_addon
+    question_addon,
+    remove_addon
 )
 
 
@@ -22,4 +23,5 @@ urlpatterns = [
     path("like-question/<int:pk>/", like_question, name="like-question"),
     path("dislike-question/<int:pk>/", dislike_question, name="dislike-question"),
     path("question-addon/<int:pk>/", question_addon, name="question_addon"),
+    path("remove-addon/<int:pk>/", remove_addon, name="remove_addon"),
 ]
