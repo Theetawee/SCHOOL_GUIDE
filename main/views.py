@@ -27,7 +27,7 @@ def index(request):
 
 def question_detail(request, pk):
     # reffer
-    reffer = request.META.get("HTTP_REFERER")
+    # reffer = request.META.get("HTTP_REFERER")
     question = get_object_or_404(Question, pk=pk)
     if question.paid:
         if not request.user.is_authenticated:
@@ -36,7 +36,7 @@ def question_detail(request, pk):
             messages.warning(
                 request, "You don't have enough points to access this question."
             )
-            return redirect(reffer)
+            return redirect("payments")
     add_ons = AddOn.objects.filter(question=question)
     title = (
         strip_tags(f"{question.question_text[:50]}... - StudyGuide")
@@ -180,3 +180,11 @@ def remove_addon(request, pk):
     return render(
         request, "partials/add_ons.html", {"add_ons": add_ons, "question": question}
     )
+
+
+@login_required
+def payments_details(request):
+    trans_length = range(1, 12)
+    trans = 11
+    context = {"trans_length": trans_length, "trans": trans}
+    return render(request, "main/payments.html", context)

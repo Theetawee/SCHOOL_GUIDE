@@ -9,7 +9,7 @@
       </a>
       <div class="flex items-center lg:order-2">
         {% if request.user.is_authenticated %}
-        <a href="#" class="block">
+        <a href="{% url 'user' %}" class="block">
           <div class="relative">
             <img
               class="w-10 h-10 rounded-full"
