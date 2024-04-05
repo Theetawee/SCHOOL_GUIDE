@@ -40,13 +40,13 @@ class Account(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255)
     username = models.CharField(max_length=10, unique=True)
     email = models.EmailField(max_length=255, unique=True, verbose_name="Email")
-    phone = PhoneNumberField(null=True)
+    phone = PhoneNumberField(null=True, blank=True)
     profile_image = models.ImageField(upload_to="profiles/", blank=True, null=True)
     date_joined = models.DateTimeField(auto_now_add=True, verbose_name="Date joined")
     last_login = models.DateTimeField(auto_now=True, verbose_name="Last login")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    points = models.IntegerField(default=10)
+    subscribed = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["name", "username"]

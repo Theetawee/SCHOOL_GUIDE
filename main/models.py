@@ -25,7 +25,7 @@ class Topic(models.Model):
     slug = models.SlugField(blank=True, null=True, unique=True, max_length=100)
 
     def __str__(self):
-        return f'{self.title} - {self.subject.name}'
+        return f"{self.title} - {self.subject.name}"
 
 
 class Question(models.Model):
@@ -51,6 +51,13 @@ class AddOn(models.Model):
 
     class Meta:
         ordering = ["-pub_date"]
+
+
+class Transaction(models.Model):
+    transation_id = models.PositiveIntegerField()
+
+    def __str__(self):
+        return str(self.transation_id)
 
 
 @receiver(post_save, sender=Subject)

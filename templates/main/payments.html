@@ -5,13 +5,23 @@
 <section>
     <div class="py-16">
         
-    
-<form class="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-800 py-6 px-4 border border-gray-200 shadow rounded-xl mx-auto">
+  {% if request.user.subscribed %}  
+
+<div class="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-800 py-6 px-4 border border-gray-200 shadow rounded-xl mx-auto">
+    <p class="text-2xl text-green-600 text-center mb-4">Your subscription is currently active</p>
+    <div class="text-center"><a href="{% url 'home' %}" class="text-primary-600 hover:underline text-center">Go home</a></div>
+</div>
+
+
+
+  {% else %}
+<form action="{% url 'payments' %}" method="post" class="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-800 py-6 px-4 border border-gray-200 shadow rounded-xl mx-auto">
+    {% csrf_token %}
     <div class="mb-6">
         <p>Upgrade to our unlimited subscription for just 2500 UGX per month! Pay conveniently with MTN (+256779730256) or AIRTEL (+256757239756). After payment, enter your transaction ID below to unlock unlimited access.</p>
     </div>
     <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter transaction Id:</label>
-    <input type="number"  id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="90210145267" required />
+    <input type="number" name="transaction_id" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="90210145267" required />
 
 
     <div class="pt-8 flex items-center justify-center">
@@ -20,6 +30,8 @@
 
 
 </form>
+
+{% endif %}
 
 
     </div>

@@ -1,4 +1,4 @@
-from .models import Question, Subject, Topic, AddOn
+from .models import Question, Subject, Topic, AddOn, Transaction
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -32,7 +32,7 @@ def question_detail(request, pk):
     if question.paid:
         if not request.user.is_authenticated:
             return redirect("account_login")
-        if request.user.points < 1:
+        if request.user.subscribed is False:
             messages.warning(
                 request, "You don't have enough points to access this question."
             )
@@ -184,7 +184,23 @@ def remove_addon(request, pk):
 
 @login_required
 def payments_details(request):
-    trans_length = range(1, 12)
-    trans = 11
-    context = {"trans_length": trans_length, "trans": trans}
+    context = {}
+
+    if request.method == "POST":
+        transaction_id = request.POST.get("transaction_id")
+        if transaction_id:
+            new_transaction_id = int(transaction_id)
+            if Transaction.objects.filter(transation_id=new_transaction_id).exists():
+                request.user.subscribed = True
+                request.user.save()
+                Transaction.objects.get(transation_id=new_transaction_id).delete()
+                messages.success(
+                    request, "Your payment was successful. You are now a subscriber."
+                )
+                return redirect("payments")
+            else:
+                messages.error(
+                    request, "Can't process your payment. Please try again after some time."
+                )
+                return redirect("payments")
     return render(request, "main/payments.html", context)
