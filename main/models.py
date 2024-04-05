@@ -55,6 +55,9 @@ class AddOn(models.Model):
 
 class Transaction(models.Model):
     transation_id = models.PositiveIntegerField()
+    used = models.BooleanField(default=False)
+    date = models.DateTimeField(auto_now_add=True)
+    use_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return str(self.transation_id)

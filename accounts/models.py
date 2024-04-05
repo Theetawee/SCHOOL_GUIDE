@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
 from phonenumber_field.modelfields import PhoneNumberField
 from django.conf import settings
 import os
+from django.utils import timezone
 
 
 class AccountManager(BaseUserManager):
@@ -46,7 +47,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(auto_now=True, verbose_name="Last login")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    subscribed = models.BooleanField(default=False)
+    last_paid = models.DateTimeField(null=True, blank=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["name", "username"]
@@ -55,6 +56,17 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    @property
+    def subscribed(self):
+        if self.last_paid:
+            # Calculate the difference in days
+            difference = timezone.now() - self.last_paid
+            # Check if the difference is less than 30 days
+            print(difference)
+            if difference.days < 30:
+                return True
+        return False
 
     def get_full_name(self):
         return self.name

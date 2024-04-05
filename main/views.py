@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.html import strip_tags
 from django.db.models import Q
+from django.utils import timezone
 
 
 # Create your views here.
@@ -190,17 +191,19 @@ def payments_details(request):
         transaction_id = request.POST.get("transaction_id")
         if transaction_id:
             new_transaction_id = int(transaction_id)
-            if Transaction.objects.filter(transation_id=new_transaction_id).exists():
-                request.user.subscribed = True
+            transaction = Transaction.objects.filter(transation_id=new_transaction_id)
+            if transaction.exists():
+                request.user.last_paid = timezone.now()
                 request.user.save()
-                Transaction.objects.get(transation_id=new_transaction_id).delete()
+                transaction.update(used=True, use_date=timezone.now())
                 messages.success(
                     request, "Your payment was successful. You are now a subscriber."
                 )
                 return redirect("payments")
             else:
                 messages.error(
-                    request, "Can't process your payment. Please try again after some time."
+                    request,
+                    "Can't process your payment. Please try again after some time.",
                 )
                 return redirect("payments")
     return render(request, "main/payments.html", context)
