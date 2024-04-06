@@ -1,4 +1,17 @@
 {% load static %}
+
+
+
+
+
+<meta name="application-name" content="{{ APP_NAME }}">
+
+
+
+<link href="{% static 'images/logo.svg' %}" media="all" rel="apple-touch-startup-image"/>
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <link rel="canonical" href="{{request.build_absolute_uri}}">
 <link rel="manifest" href="{% url 'manifest' %}">
