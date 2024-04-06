@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from accounts.models import Account
+from django.utils.html import strip_tags
 
 
 class Subject(models.Model):
@@ -37,7 +38,9 @@ class Question(models.Model):
     paid = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.question_text[:50]  # Return first 50 characters of question text
+        return strip_tags(
+            f"{self.question_text[:50]}"
+        )
 
 
 class AddOn(models.Model):
