@@ -25,12 +25,12 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    @apply border border-gray-300 rounded dark:border-gray-800 mb-4 ;
   }
   
   /* Apply styles to table headers */
   th {
-    background-color: #f2f2f2;
-    color: #333;
+    @apply bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100;
     font-weight: bold;
     padding: 10px;
     text-align: left;
@@ -38,12 +38,12 @@ table {
   
   /* Apply alternating row colors to table rows */
   tr:nth-child(even) {
-    background-color: #f9f9f9;
+    @apply bg-gray-200 dark:bg-gray-800;
   }
   
   /* Apply styles to table cells */
   td {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    @apply border-b border-gray-200 dark:border-gray-800 dark:bg-gray-900;
   }
   

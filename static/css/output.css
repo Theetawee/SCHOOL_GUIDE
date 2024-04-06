@@ -1153,11 +1153,6 @@ input:checked + .toggle-bg{
   z-index: 50;
 }
 
-.mx-1{
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -1187,10 +1182,6 @@ input:checked + .toggle-bg{
   margin-bottom: 0.25rem;
 }
 
-.mb-10{
-  margin-bottom: 2.5rem;
-}
-
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -1215,10 +1206,6 @@ input:checked + .toggle-bg{
   margin-inline-end: 0.5rem;
 }
 
-.me-2\.5{
-  margin-inline-end: 0.625rem;
-}
-
 .me-4{
   margin-inline-end: 1rem;
 }
@@ -1229,10 +1216,6 @@ input:checked + .toggle-bg{
 
 .mr-2{
   margin-right: 0.5rem;
-}
-
-.ms-1{
-  margin-inline-start: 0.25rem;
 }
 
 .ms-3{
@@ -1586,12 +1569,6 @@ input:checked + .toggle-bg{
 
 .gap-y-3{
   row-gap: 0.75rem;
-}
-
-.space-x-1 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -2256,13 +2233,35 @@ input:checked + .toggle-bg{
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(224 224 224 / var(--tw-border-opacity));
+}
+
+table:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(66 66 66 / var(--tw-border-opacity));
 }
 
 /* Apply styles to table headers */
 
+th{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(66 66 66 / var(--tw-text-opacity));
+}
+
+th:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(97 97 97 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity));
+}
+
 th {
-  background-color: #f2f2f2;
-  color: #333;
   font-weight: bold;
   padding: 10px;
   text-align: left;
@@ -2270,15 +2269,30 @@ th {
 
 /* Apply alternating row colors to table rows */
 
-tr:nth-child(even) {
-  background-color: #f9f9f9;
+tr:nth-child(even){
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 238 238 / var(--tw-bg-opacity));
+}
+
+tr:nth-child(even):is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(66 66 66 / var(--tw-bg-opacity));
 }
 
 /* Apply styles to table cells */
 
 td {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(238 238 238 / var(--tw-border-opacity));
+}
+
+td:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(66 66 66 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(33 33 33 / var(--tw-bg-opacity));
 }
 
 .hover\:border-gray-300:hover{
@@ -2358,11 +2372,6 @@ td {
 .hover\:text-gray-900:hover{
   --tw-text-opacity: 1;
   color: rgb(33 33 33 / var(--tw-text-opacity));
-}
-
-.hover\:text-primary-600:hover{
-  --tw-text-opacity: 1;
-  color: rgb(13 148 136 / var(--tw-text-opacity));
 }
 
 .hover\:text-sky-700:hover{
@@ -2496,6 +2505,11 @@ td {
   border-color: rgb(66 66 66 / var(--tw-border-opacity));
 }
 
+.dark\:border-gray-900:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(33 33 33 / var(--tw-border-opacity));
+}
+
 .dark\:border-transparent:is(.dark *){
   border-color: transparent;
 }
@@ -2518,6 +2532,10 @@ td {
 .dark\:bg-gray-800:is(.dark *){
   --tw-bg-opacity: 1;
   background-color: rgb(66 66 66 / var(--tw-bg-opacity));
+}
+
+.dark\:bg-gray-800\/30:is(.dark *){
+  background-color: rgb(66 66 66 / 0.3);
 }
 
 .dark\:bg-gray-800\/50:is(.dark *){
@@ -2748,10 +2766,6 @@ td {
     margin-inline-end: 1.5rem;
   }
 
-  .md\:ms-2{
-    margin-inline-start: 0.5rem;
-  }
-
   .md\:mt-0{
     margin-top: 0px;
   }
@@ -2763,12 +2777,6 @@ td {
   .md\:gap-x-16{
     -moz-column-gap: 4rem;
          column-gap: 4rem;
-  }
-
-  .md\:space-x-2 > :not([hidden]) ~ :not([hidden]){
-    --tw-space-x-reverse: 0;
-    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .md\:space-y-6 > :not([hidden]) ~ :not([hidden]){
@@ -2808,11 +2816,6 @@ td {
   .xl\:p-0{
     padding: 0px;
   }
-}
-
-.rtl\:rotate-180:where([dir="rtl"], [dir="rtl"] *){
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){
