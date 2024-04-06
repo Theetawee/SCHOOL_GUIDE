@@ -4,8 +4,22 @@
 
 {% block content %}
 
-<section>
-    <h1 class="text-3xl text-center my-6">Nothing to see here</h1>
+<section class="py-16 px-4">
+    <div>
+        {% if not request.user.subscribed %}
+        <div class="max-w-screen-lg mx-auto dark:bg-gray-800 rounded-xl bg-white border border-gray-200 shadow dark:border-gray-800 p-4">
+            <h1 class="text-2xl font-bold mb-4">Subscribe to {{APP_NAME}} for Exclusive Benefits!</h1>
+            <p class="text-gray-600 dark:text-gray-300">Unlock unlimited access to a wealth of educational resources and exclusive features by subscribing now!</p>
+            <ul class="list-disc list-inside mt-4">
+                <li>Access to thousands of online tests and quizzes</li>
+                <li>Download past papers for comprehensive exam preparation</li>
+                <li>Explore a vast library of educational books and materials</li>
+                <li>Personalized study recommendations based on your performance</li>
+            </ul>
+            <a href="{% url 'payments' %}" class="mt-8 block text-center max-w-sm mx-auto px-6 py-3 bg-primary-700 text-white rounded hover:bg-primary-700/80">Subscribe Now</a>
+        </div>
+        {% endif %}
+    </div>
 </section>
 
 

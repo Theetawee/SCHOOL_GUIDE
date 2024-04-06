@@ -232,7 +232,12 @@ def remove_addon(request, pk):
 @login_required
 def payments_details(request):
     context = {}
-
+    page_name = "Payments"
+    title = f"Payments - {APP_NAME}"
+    description = f"Payment details on {APP_NAME}."
+    context["page_name"] = page_name
+    context["title"] = title
+    context["description"] = description
     if request.method == "POST":
         transaction_id = request.POST.get("transaction_id")
         if transaction_id:
