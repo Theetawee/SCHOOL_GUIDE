@@ -26,8 +26,14 @@
                             class="w-9 h-9 rounded-full"
                             src="{% static 'images/default.webp' %}"
                             alt="User Image" />
+                            {% if request.user.subscribed %}
                           <span
                             class="top-0 left-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                            {% else %}
+                            <span
+                            class="top-0 left-7 absolute w-3.5 h-3.5 bg-amber-600 border-2 border-white dark:border-gray-900 rounded-full"></span>
+                          
+                            {% endif %}
                         </div>
                       </a>
               
