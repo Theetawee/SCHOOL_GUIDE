@@ -2233,6 +2233,11 @@ input:checked + .toggle-bg{
   display:flex;
 }
 
+*:disabled{
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
 /* table.css */
 
 /* Apply basic styles to the table */
