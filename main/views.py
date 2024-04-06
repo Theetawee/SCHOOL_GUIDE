@@ -53,6 +53,7 @@ def index(request):
 
 
 def question_detail(request, pk):
+    page_name = "Question"
     # reffer
     # reffer = request.META.get("HTTP_REFERER")
     question = get_object_or_404(Question, pk=pk)
@@ -84,6 +85,7 @@ def question_detail(request, pk):
         "description": description,
         "question": question,
         "add_ons": add_ons,
+        "page_name": page_name,
     }
     return render(request, "main/question_detail.html", context)
 
@@ -91,6 +93,7 @@ def question_detail(request, pk):
 def subjects(request):
     title = f"Subjects - {APP_NAME}"
     description = f"Explore a wide range of subjects and topics on {APP_NAME}. Dive into various fields of study, including mathematics, science, history, and more. Access comprehensive resources and enhance your learning experience."
+    page_name = "Subjects"
     subjects = Subject.objects.all()
     topics = Topic.objects.all()
     context = {
@@ -98,11 +101,13 @@ def subjects(request):
         "description": description,
         "subjects": subjects,
         "topics": topics,
+        "page_name": page_name,
     }
     return render(request, "main/subjects.html", context)
 
 
 def questions_list(request, topic_slug):
+    page_name = "Questions"
     topic = get_object_or_404(Topic, slug=topic_slug)
     title = f"{topic.title} - {APP_NAME}"
     description = f"Explore questions related to {topic.title} on {APP_NAME}. Test your knowledge and understanding of {topic.title} with our comprehensive collection of questions."
@@ -112,6 +117,7 @@ def questions_list(request, topic_slug):
         "description": description,
         "questions": questions,
         "topic": topic,
+        "page_name": page_name,
     }
     return render(request, "main/questions_list.html", context)
 
