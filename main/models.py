@@ -18,6 +18,9 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["-id"]
+
 
 class Topic(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
@@ -27,6 +30,9 @@ class Topic(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.subject.name}"
+
+    class Meta:
+        ordering = ["-id"]
 
 
 class Question(models.Model):
@@ -40,7 +46,11 @@ class Question(models.Model):
     def __str__(self):
         return strip_tags(
             f"{self.question_text[:50]}"
+        
         )
+
+    class Meta:
+        ordering = ["-id"]
 
 
 class AddOn(models.Model):
@@ -64,6 +74,9 @@ class Transaction(models.Model):
 
     def __str__(self):
         return str(self.transation_id)
+
+    class Meta:
+        ordering = ["-date"]
 
 
 @receiver(post_save, sender=Subject)
