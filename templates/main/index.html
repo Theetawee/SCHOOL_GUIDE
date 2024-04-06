@@ -27,11 +27,11 @@
     </div>
     <div id="results">
         {% include 'base/loader.html' %}
-        {% if not request.htmx %}
+        {% if not request.htmx and request.GET.question %}
         {% include 'partials/results.html' %}
         {% endif %}
     </div>
-    <div class="flex items-center gap-x-8 md:gap-x-16 gap-y-3 justify-center">
+    <div class="flex items-center mt-10 gap-x-8 md:gap-x-16 gap-y-3 justify-center">
         <a class="text-primary-600 hover:underline" href="{% url 'subjects' %}">Subjects and Topics</a>
         <a class="text-primary-600 hover:underline" href="{% url 'online_tests' %}">Online Tests</a>
         <a class="text-primary-600 hover:underline" href="{% url 'books' %}">Books</a>
