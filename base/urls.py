@@ -6,7 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from base.sitemap import StaticViewSitemap
 from django.views.generic.base import TemplateView
 from base.utils import service_worker, manifest, offline, assetLink
-
+from base.settings.base import APP_NAME
 sitemaps = {"others": StaticViewSitemap}
 
 
@@ -20,7 +20,7 @@ urlpatterns = [
             template_name="base/robots.txt", content_type="text/plain"
         ),
     ),
-    path("admin/", admin.site.urls),
+    path("app/admin/", admin.site.urls),
     path("", include("main.urls")),
     path("accounts/", include("accounts.urls")),
     path(
@@ -47,6 +47,6 @@ handler400 = "base.utils.custom_404_view"
 handler500 = "base.utils.custom_500_view"
 handler403 = "base.utils.custom_404_view"
 
-admin.site.site_header = "App name"
-admin.site.site_title = "App Admin"
+admin.site.site_header = f"{APP_NAME} Admin"
+admin.site.site_title = f"{APP_NAME} Admin"
 admin.site.index_title = "Welcome to the Admin Panel"
