@@ -13,8 +13,42 @@
   <div>
     <div>
       <div>
-        <p class="text-2xl mb-6">Total Questions {{questions.count}}</p>
+        <p class="text-2xl mb-6">Total Questions {{total}}</p>
       </div>
+
+
+      <div class="mb-8">
+        <div class="flex flex-col items-center">
+            <!-- Help text -->
+            <span class="text-sm text-gray-700 dark:text-gray-400">
+                Showing <span class="font-semibold text-gray-900 dark:text-white">{{ questions.number|default_if_none:"1" }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ questions.paginator.num_pages }}</span> Entries
+            </span>
+            <!-- Buttons -->
+            <div class="inline-flex mt-2 xs:mt-0">
+                {% if questions.has_previous %}
+                <a  href="{% url 'questions_list' topic.slug %}?page={{ questions.previous_page_number }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    Prev
+                </a>
+                {% else %}
+                <button disabled class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 ">
+                    Prev
+                </button>
+                {% endif %}
+                {% if questions.has_next %}
+                <a href="{% url 'questions_list' topic.slug %}?page={{ questions.next_page_number }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    Next
+                </a>
+                {% else %}
+                <button disabled class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                    Next
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+
+
 
       <div class="grid grid-cols-1 gap-6">
         {% for question in questions %}

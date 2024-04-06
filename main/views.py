@@ -112,12 +112,26 @@ def questions_list(request, topic_slug):
     title = f"{topic.title} - {APP_NAME}"
     description = f"Explore questions related to {topic.title} on {APP_NAME}. Test your knowledge and understanding of {topic.title} with our comprehensive collection of questions."
     questions = Question.objects.filter(topic=topic)
+
+    # Pagination
+    paginator = Paginator(questions, 5)
+    page = request.GET.get("page")
+    try:
+        questions = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        questions = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        questions = paginator.page(paginator.num_pages)
+
     context = {
         "title": title,
         "description": description,
         "questions": questions,
         "topic": topic,
         "page_name": page_name,
+        "total": paginator.count,
     }
     return render(request, "main/questions_list.html", context)
 
