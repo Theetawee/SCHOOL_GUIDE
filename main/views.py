@@ -19,14 +19,14 @@ def index(request):
 
     if query:
         # Filter the questions based on the query
-        results = Question.objects.filter(
+        all_results = Question.objects.filter(
             Q(topic__title__icontains=query)
             | Q(question_text__icontains=query)
             | Q(topic__subject__name__icontains=query)
         )
 
         # Paginate the results
-        paginator = Paginator(results, 5)  # Change the number as needed
+        paginator = Paginator(all_results, 5)
         page_number = request.GET.get("page")
         try:
             results = paginator.page(page_number)
@@ -37,7 +37,16 @@ def index(request):
 
         # Check if it's an HTMX request
         if request.htmx:
-            return render(request, "partials/results.html", {"results": results})
+            return render(
+                request,
+                "partials/results.html",
+                {"results": results, "total": paginator.count},
+            )
+
+        else:
+            context["total"] = paginator.count
+            context["results"] = results
+            return render(request, "main/index.html", context)
 
     return render(request, "main/index.html", context)
 
