@@ -1247,6 +1247,10 @@ input:checked + .toggle-bg{
   margin-inline-start: auto;
 }
 
+.mt-10{
+  margin-top: 2.5rem;
+}
+
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -1257,10 +1261,6 @@ input:checked + .toggle-bg{
 
 .mt-4{
   margin-top: 1rem;
-}
-
-.mt-10{
-  margin-top: 2.5rem;
 }
 
 .block{
@@ -2661,6 +2661,11 @@ td {
 .dark\:focus\:ring-blue-500:focus:is(.dark *){
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(63 131 248 / var(--tw-ring-opacity));
+}
+
+.dark\:focus\:ring-blue-800:focus:is(.dark *){
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(30 66 159 / var(--tw-ring-opacity));
 }
 
 .dark\:focus\:ring-gray-600:focus:is(.dark *){
