@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.utils.html import strip_tags
 from django.db.models import Q
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -13,13 +14,28 @@ def index(request):
     description = "Explore StudyGuide, your ultimate destination for online tests, past papers, books, and a wealth of educational resources. Enhance your learning experience and excel in your studies with our comprehensive e-learning platform. Start your journey towards academic success today!"
     context = {"title": title, "description": description}
 
-    if "question" in request.GET:
-        query = request.GET.get("question")
+    # Get the query parameter
+    query = request.GET.get("question")
+
+    if query:
+        # Filter the questions based on the query
         results = Question.objects.filter(
             Q(topic__title__icontains=query)
             | Q(question_text__icontains=query)
             | Q(topic__subject__name__icontains=query)
         )
+
+        # Paginate the results
+        paginator = Paginator(results, 5)  # Change the number as needed
+        page_number = request.GET.get("page")
+        try:
+            results = paginator.page(page_number)
+        except PageNotAnInteger:
+            results = paginator.page(1)
+        except EmptyPage:
+            results = paginator.page(paginator.num_pages)
+
+        # Check if it's an HTMX request
         if request.htmx:
             return render(request, "partials/results.html", {"results": results})
 
