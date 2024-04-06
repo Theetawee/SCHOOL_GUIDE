@@ -2470,6 +2470,11 @@ td:is(.dark *){
   --tw-ring-color: rgb(125 211 252 / var(--tw-ring-opacity));
 }
 
+.focus\:ring-gray-300:focus{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(224 224 224 / var(--tw-ring-opacity));
+}
+
 @-moz-document url-prefix(){
   .firefox\:bg-opacity-90{
     --tw-bg-opacity: 0.9;
@@ -2725,6 +2730,11 @@ td:is(.dark *){
   --tw-ring-color: rgb(7 89 133 / var(--tw-ring-opacity));
 }
 
+.dark\:focus\:ring-gray-800:focus:is(.dark *){
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(66 66 66 / var(--tw-ring-opacity));
+}
+
 @media (min-width: 640px){
   .sm\:mx-auto{
     margin-left: auto;
@@ -2809,6 +2819,21 @@ td:is(.dark *){
   .lg\:my-8{
     margin-top: 2rem;
     margin-bottom: 2rem;
+  }
+
+  .lg\:px-5{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .lg\:py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:py-2\.5{
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
   }
 }
 
