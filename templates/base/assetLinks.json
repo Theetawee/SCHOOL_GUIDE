@@ -1,8 +1,8 @@
 [{
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.telfirm.www.twa",
-      "sha256_cert_fingerprints": ["6B:32:24:98:00:43:25:03:C5:8F:FC:DF:28:A3:9E:70:0E:CB:70:4C:5A:19:53:90:14:C2:17:DD:80:38:C8:6B"]
-    }
-  }]
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.telfirm.www.twa",
+    "sha256_cert_fingerprints": ["41:87:9A:67:0D:EF:A1:D8:B2:D1:F6:5A:7A:24:64:15:61:78:79:B5:75:59:8F:F1:D2:C0:E8:96:54:D7:CC:0B"]
+  }
+}]
