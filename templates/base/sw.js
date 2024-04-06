@@ -1,7 +1,7 @@
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
 );
-const CACHE = "studyGuide",
+const CACHE = "app",
   offlineFallbackPage = "/offline/";
 self.addEventListener("message", (e) => {
   e.data && "SKIP_WAITING" === e.data.type && self.skipWaiting();

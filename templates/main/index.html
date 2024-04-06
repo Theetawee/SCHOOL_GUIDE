@@ -35,10 +35,11 @@
         <a class="text-primary-600 " href="{% url 'subjects' %}">Subjects and Topics</a>
         <a class="text-primary-600 " href="{% url 'online_tests' %}">Online Tests</a>
         <a class="text-primary-600 " href="{% url 'books' %}">Books</a>
+        <a class="text-primary-600 " href="{% static 'app.apk' %}" download>Lite App</a>
     </div>
 
     <div class=" max-w-screen-lg mx-auto py-20 text-lg">
-        <p>Unlock your potential with StudyGuide! Join our vibrant community of learners from across the globe and take your learning journey to the next level.</p>
+        <p>Unlock your potential with {{APP_NAME}}! Join our vibrant community of learners from across the globe and take your learning journey to the next level.</p>
         <p>Sign up now and gain access to a world of knowledge, interactive courses, and invaluable resources designed to fuel your academic success.</p>
     </div>
 

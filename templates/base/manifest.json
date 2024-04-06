@@ -1,7 +1,7 @@
 {
   "{% load static %}": "",
-  "name": "StudyGuide",
-  "short_name": "StudyGuide",
+  "name": "{{APP_NAME}}",
+  "short_name": "{{APP_NAME}}",
   "start_url": "/",
   "theme_color": "#ffffff",
   "scope": "/",
@@ -14,7 +14,7 @@
   "background_color": "#ffffff",
   "display_override": ["standalone", "window-controls-overlay"],
   "categories": ["education"],
-  "description": "Explore StudyGuide, your ultimate destination for online tests, past papers, books, and a wealth of educational resources. Enhance your learning experience and excel in your studies with our comprehensive e-learning platform. Start your journey towards academic success today!",
+  "description": "Explore {{APP_NAME}}, your ultimate destination for online tests, past papers, books, and a wealth of educational resources. Enhance your learning experience and excel in your studies with our comprehensive e-learning platform. Start your journey towards academic success today!",
   "display": "standalone",
   "id": "/",
   "icons": [

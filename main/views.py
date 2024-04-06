@@ -6,12 +6,13 @@ from django.utils.html import strip_tags
 from django.db.models import Q
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from base.settings.base import APP_NAME
 
 
 # Create your views here.
 def index(request):
-    title = "StudyGuide - Your Premier E-Learning Platform for Online Tests, Past Papers, Books, and More"
-    description = "Explore StudyGuide, your ultimate destination for online tests, past papers, books, and a wealth of educational resources. Enhance your learning experience and excel in your studies with our comprehensive e-learning platform. Start your journey towards academic success today!"
+    title = f"{APP_NAME} - Your Premier E-Learning Platform for Online Tests, Past Papers, Books, and More"
+    description = f"Explore {APP_NAME}, your ultimate destination for online tests, past papers, books, and a wealth of educational resources. Enhance your learning experience and excel in your studies with our comprehensive e-learning platform. Start your journey towards academic success today!"
     context = {"title": title, "description": description}
 
     # Get the query parameter
@@ -65,14 +66,14 @@ def question_detail(request, pk):
             return redirect("payments")
     add_ons = AddOn.objects.filter(question=question)
     title = (
-        strip_tags(f"{question.question_text[:50]}... - StudyGuide")
+        strip_tags(f"{question.question_text[:50]}... - {APP_NAME}")
         .replace("\n", " ")
         .replace("\r", " ")
         .replace("&nbsp;", " ")
     )
     description = (
         strip_tags(
-            f"Explore the details of the question: '{question.question_text}'. Test your knowledge and understanding with StudyGuide."
+            f"Explore the details of the question: '{question.question_text}'. Test your knowledge and understanding with {APP_NAME}."
         )
         .replace("\n", " ")
         .replace("\r", " ")
@@ -88,8 +89,8 @@ def question_detail(request, pk):
 
 
 def subjects(request):
-    title = "Subjects - StudyGuide"
-    description = "Explore a wide range of subjects and topics on StudyGuide. Dive into various fields of study, including mathematics, science, history, and more. Access comprehensive resources and enhance your learning experience."
+    title = f"Subjects - {APP_NAME}"
+    description = f"Explore a wide range of subjects and topics on {APP_NAME}. Dive into various fields of study, including mathematics, science, history, and more. Access comprehensive resources and enhance your learning experience."
     subjects = Subject.objects.all()
     topics = Topic.objects.all()
     context = {
@@ -103,8 +104,8 @@ def subjects(request):
 
 def questions_list(request, topic_slug):
     topic = get_object_or_404(Topic, slug=topic_slug)
-    title = f"{topic.title} - StudyGuide"
-    description = f"Explore questions related to {topic.title} on StudyGuide. Test your knowledge and understanding of {topic.title} with our comprehensive collection of questions."
+    title = f"{topic.title} - {APP_NAME}"
+    description = f"Explore questions related to {topic.title} on {APP_NAME}. Test your knowledge and understanding of {topic.title} with our comprehensive collection of questions."
     questions = Question.objects.filter(topic=topic)
     context = {
         "title": title,
@@ -116,15 +117,15 @@ def questions_list(request, topic_slug):
 
 
 def online_tests(request):
-    title = "Online Tests - StudyGuide"
-    description = "Take online tests on StudyGuide to assess your knowledge, practice your skills, and prepare for exams. Explore a wide range of subjects and topics with our comprehensive collection of online tests."
+    title = f"Online Tests - {APP_NAME}"
+    description = f"Take online tests on {APP_NAME} to assess your knowledge, practice your skills, and prepare for exams. Explore a wide range of subjects and topics with our comprehensive collection of online tests."
     context = {"title": title, "description": description}
     return render(request, "main/online_tests.html", context)
 
 
 def books_list(request):
-    title = "Books - StudyGuide"
-    description = "Explore a vast collection of educational books on StudyGuide. Find textbooks, reference materials, and study guides to enhance your learning experience and excel in your studies."
+    title = f"Books - {APP_NAME}"
+    description = f"Explore a vast collection of educational books on {APP_NAME}. Find textbooks, reference materials, and study guides to enhance your learning experience and excel in your studies."
     context = {"title": title, "description": description}
     return render(request, "main/books.html", context)
 
