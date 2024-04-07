@@ -19,7 +19,7 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div>
-        <input type="search" name="question" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required />
+        <input type="search" name="question" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{APP_NAME}}" required />
         
     </div>
 </form>
@@ -31,11 +31,10 @@
         {% include 'partials/results.html' %}
         {% endif %}
     </div>
-    <div class="flex  text-center mt-10 gap-x-8 md:gap-x-16 gap-y-3 justify-center">
+    <div class="flex  text-center mt-10 gap-x-4 md:gap-x-16 gap-y-3 justify-center">
         <a class="text-primary-600 " href="{% url 'subjects' %}">Subjects and Topics</a>
         <a class="text-primary-600 " href="{% url 'online_tests' %}">Online Tests</a>
         <a class="text-primary-600 " href="{% url 'books' %}">Books</a>
-        <a class="text-primary-600 " href="{% static 'Synapse.apk' %}" download>Lite App</a>
     </div>
 
     <div class=" max-w-screen-lg mx-auto py-20 text-lg">
