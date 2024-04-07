@@ -10,6 +10,10 @@ import os
 from django.utils import timezone
 from datetime import timedelta
 
+from allauth.account.signals import user_signed_up
+from allauth.socialaccount.models import SocialAccount
+from django.dispatch import receiver
+
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, username, name, password=None, **extra_fields):
@@ -49,6 +53,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     last_paid = models.DateTimeField(null=True, blank=True)
+    profile_url = models.URLField(null=True, blank=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["name", "username"]
@@ -99,6 +104,8 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     @property
     def image(self):
+        if self.profile_url:
+            return self.profile_url
         if self.profile_image:
             return self.profile_image.url
         return os.path.join(settings.STATIC_URL, "images", "default.webp")
@@ -111,3 +118,18 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     # def get_absolute_url(self):
     #     return reverse('profile', args=[str(self.username)])
+
+
+@receiver(user_signed_up)
+def social_account_signed_up(request, user, **kwargs):
+    try:
+        social_account = SocialAccount.objects.get(user=user)
+        extra_data = social_account.extra_data.get("picture")
+        names = social_account.extra_data.get("name")
+        username = social_account.extra_data.get("given_name")
+        user.username = username.lower().replace(" ", "_")
+        user.name = names
+        user.profile_url = extra_data
+        user.save()
+    except Exception:
+        pass
