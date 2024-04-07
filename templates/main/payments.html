@@ -5,7 +5,7 @@
 <section>
     <div class="py-16">
         
-  {% if request.user.subscribed %}  
+  {% if request.user.subscribed and not request.user.on_trial %}  
 
 <div class="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-800 py-6 px-4 border border-gray-200 shadow rounded-xl mx-auto">
     <p class="text-2xl text-green-600 text-center mb-4">Your subscription is currently active</p>

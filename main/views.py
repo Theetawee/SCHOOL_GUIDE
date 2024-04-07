@@ -54,19 +54,17 @@ def index(request):
     return render(request, "main/index.html", context)
 
 
+@login_required
 def question_detail(request, pk):
     page_name = "Question"
     # reffer
     # reffer = request.META.get("HTTP_REFERER")
     question = get_object_or_404(Question, pk=pk)
-    if question.paid:
-        if not request.user.is_authenticated:
-            return redirect("account_login")
-        if request.user.subscribed is False:
-            messages.warning(
-                request, "You don't have enough points to access this question."
-            )
-            return redirect("payments")
+    if request.user.subscribed is False:
+        messages.warning(
+            request, "You don't have enough points to access this question."
+        )
+        return redirect("payments")
     add_ons = AddOn.objects.filter(question=question)
     title = (
         strip_tags(f"{question.question_text[:50]}... - {APP_NAME}")

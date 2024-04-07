@@ -8,6 +8,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.conf import settings
 import os
 from django.utils import timezone
+from datetime import timedelta
 
 
 class AccountManager(BaseUserManager):
@@ -59,14 +60,36 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     @property
     def subscribed(self):
+        if self.is_superuser:
+            return True  # Superusers are always considered subscribed
+
         if self.last_paid:
-            # Calculate the difference in days
+            # Calculate the difference in days since last payment
             difference = timezone.now() - self.last_paid
-            # Check if the difference is less than 30 days
-            print(difference)
             if difference.days < 30:
-                return True
-        return False
+                return True  # User has made a recent payment
+
+        # Check if within the trial period
+        trial_end_date = self.date_joined + timedelta(days=10)
+        if timezone.now() < trial_end_date:
+            return True  # Within trial period
+
+        return False  # Not subscribed
+
+    @property
+    def on_trial(self):
+        if self.is_superuser:
+            return False  # Superusers are always considered on trial
+        trial_end_date = self.date_joined + timedelta(days=10)
+        if timezone.now() < trial_end_date:
+            return True  # Within trial period
+
+    @property
+    def trial_days_remaining(self):
+        if self.is_superuser:
+            return 0  # Superusers have unlimited trial time
+        trial_end_date = self.date_joined + timedelta(days=10)
+        return (trial_end_date - timezone.now()).days
 
     def get_full_name(self):
         return self.name
