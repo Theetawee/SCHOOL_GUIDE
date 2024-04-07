@@ -290,6 +290,10 @@ def email_user(request):
 
 
 def about_us(request):
+    title = f"About Us - {APP_NAME} "
+    description = f"Learn more about {APP_NAME} - your premier destination for online learning. Discover our mission, vision, and commitment to providing high-quality educational resources."
     page_name = "About"
-    context = {"page_name": page_name}
+
+    context = {"title": title, "description": description, "page_name": page_name}
+
     return render(request, "main/about.html", context)
