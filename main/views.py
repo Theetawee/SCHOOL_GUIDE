@@ -7,6 +7,8 @@ from django.db.models import Q
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from base.settings.base import APP_NAME
+from django.core.mail import send_mail
+from .forms import EmailForm
 
 
 # Create your views here.
@@ -258,3 +260,30 @@ def payments_details(request):
                 )
                 return redirect("payments")
     return render(request, "main/payments.html", context)
+
+
+@login_required
+def email_user(request):
+    if request.method == "POST":
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
+            recipients = form.cleaned_data["recipients"]
+
+            # Loop through the recipients and send individual emails
+            for recipient in recipients:
+                send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=request.user.email,  # Use the email of the logged-in user as the sender
+                    recipient_list=[
+                        recipient.email
+                    ],  # Send email to each recipient separately
+                    fail_silently=False,
+                )
+            messages.success(request, "Emails sent successfully!")
+            return redirect("email_user")
+    else:
+        form = EmailForm()
+    return render(request, "main/email.html", {"form": form})

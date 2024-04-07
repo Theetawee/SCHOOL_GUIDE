@@ -10,7 +10,8 @@ from .views import (
     dislike_question,
     question_addon,
     remove_addon,
-    payments_details
+    payments_details,
+    email_user
 )
 
 
@@ -26,4 +27,5 @@ urlpatterns = [
     path("question-addon/<int:pk>/", question_addon, name="question_addon"),
     path("remove-addon/<int:pk>/", remove_addon, name="remove_addon"),
     path("payments/", payments_details, name="payments"),
+    path("email/", email_user, name="email_user"),
 ]
