@@ -287,3 +287,9 @@ def email_user(request):
     else:
         form = EmailForm()
     return render(request, "main/email.html", {"form": form})
+
+
+def about_us(request):
+    page_name = "About"
+    context = {"page_name": page_name}
+    return render(request, "main/about.html", context)
